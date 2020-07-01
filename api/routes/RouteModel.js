@@ -110,7 +110,7 @@ cron.schedule('0 1 * * *', () => {
 
 router.route('/all').get((req, res) =>{
     console.log('all');
-    db.chargebeeDB.find()
+    db.chargebeeDB.find().limit(100)
         .then(data => {
             console.log('data', data);
             res.json(data);
