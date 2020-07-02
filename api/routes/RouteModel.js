@@ -36,16 +36,16 @@ cron.schedule('0 1 * * *', () => {
         } else {
             if (result.next_offset) {
                 // chargebee area
-                // callOffset(result.next_offset, result.list,(dates) => {
+                callOffset(result.next_offset, result.list,(dates) => {
 
-                //     const newChargebee = new db.chargebeeDB({
-                //         chargebee: dates
-                //     });
+                    const newChargebee = new db.chargebeeDB({
+                        chargebee: dates
+                    });
 
-                //     console.log('-----totalData', newChargebee);
-                //     newChargebee.save()
-                //         .then(success => console.log('Success!'))
-                //         .catch(err => console.log('Not saved!'));
+                    console.log('-----totalData', newChargebee);
+                    newChargebee.save()
+                        .then(success => console.log('Success!'))
+                        .catch(err => console.log('Not saved!'));
 
                     // activecampaign area
                     // request(options, function (error, response, body) {
@@ -82,7 +82,7 @@ cron.schedule('0 1 * * *', () => {
                     //                 });
                     //         }
                     // });
-                // });
+                });
 
                 // var contact_exists = ac.api("contact/paginator", {});
                 // contact_exists.then(function(result) {
@@ -110,7 +110,7 @@ cron.schedule('0 1 * * *', () => {
 
 router.route('/all').get((req, res) =>{
     console.log('all');
-    db.chargebeeDB.find().limit(100)
+    db.chargebeeDB.find()
         .then(data => {
             console.log('data', data);
             res.json(data);
