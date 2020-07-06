@@ -159,7 +159,7 @@ var options = {
 
 router.route('/all').get((req, res) =>{
     // find chargebee data
-    db.chargebeeDB.find()
+    db.chargebeeDB.find().limit()
         .then(data => {
             console.log('data', data);
 
@@ -169,7 +169,7 @@ router.route('/all').get((req, res) =>{
             };
 
             // find activecampaign data
-            db.activeDB.find()
+            db.activeDB.find().limit()
                 .then(response => {
                     totalData["activecampaign"] = response;
                     res.json(totalData);
